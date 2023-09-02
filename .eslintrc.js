@@ -19,6 +19,7 @@ module.exports = {
         "react-native/no-unused-styles": 2,
         "react-native/no-single-element-style-arrays": 2,
         "react-native/no-inline-styles": 2,
+        "@typescript-eslint/no-explicit-any" : "off",
         "@typescript-eslint/no-unused-vars" : ["off"],
         "@typescript-eslint/no-namespace": "off",
         "@typescript-eslint/no-empty-interface": ["off", {

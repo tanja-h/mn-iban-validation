@@ -5,7 +5,17 @@ import { accentColor, activeOpacity, borderRadius, primaryColor, secondaryColor,
 
 const SimpleValidator = () => {
     const [input, setInput] = useState("");
+    const [isResultVisible, setIsResultVisible] = useState(false);
     const isValid = false;
+
+    const onChangeText = (text: string) => {
+        setIsResultVisible(false);
+        setInput(text);
+    };
+
+    const onValidate = () => {
+        setIsResultVisible(true);
+    };
 
     return (
         <ScrollView contentContainerStyle={styles.container}>
@@ -13,20 +23,27 @@ const SimpleValidator = () => {
             <Text style={styles.text}>Please enter your Montenegro IBAN for validation:</Text>
             <TextInput
                 value={input}
-                onChangeText={setInput}
+                onChangeText={onChangeText}
                 style={styles.input}
                 placeholder="MN..."
                 placeholderTextColor={accentColor}
                 autoCapitalize="characters"
             />
 
-            <TouchableOpacity style={styles.buttonContainer} activeOpacity={activeOpacity}>
+            <TouchableOpacity
+                onPress={onValidate}
+                style={styles.buttonContainer}
+                activeOpacity={activeOpacity}
+                testID="validate-button"
+            >
                 <Text style={styles.buttonText}>VALIDATE</Text>
             </TouchableOpacity>
 
-            <View style={styles.resultContainer}>
-                <Text style={styles.text}>Entered IBAN is {isValid ? "valid" : "not valid"} !</Text>
-            </View>
+            {isResultVisible ? (
+                <View style={styles.resultContainer} testID="result">
+                    <Text style={styles.text}>Entered IBAN is {isValid ? "valid" : "not valid"} !</Text>
+                </View>
+            ) : null}
         </ScrollView>
     );
 };
