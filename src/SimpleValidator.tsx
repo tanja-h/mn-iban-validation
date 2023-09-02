@@ -2,11 +2,12 @@ import { useState } from "react";
 import { ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
 import Constants from "expo-constants";
 import { accentColor, activeOpacity, borderRadius, primaryColor, secondaryColor, spacingLarge, spacingMedium, spacingSmall, spacingXLarge, whiteColor } from "./styles";
+import { validateIBAN } from "./utils/utils";
 
 const SimpleValidator = () => {
     const [input, setInput] = useState("");
     const [isResultVisible, setIsResultVisible] = useState(false);
-    const isValid = false;
+    const [isValid, setIsValid] = useState(false);
 
     const onChangeText = (text: string) => {
         setIsResultVisible(false);
@@ -14,6 +15,7 @@ const SimpleValidator = () => {
     };
 
     const onValidate = () => {
+        setIsValid(validateIBAN(input));
         setIsResultVisible(true);
     };
 
