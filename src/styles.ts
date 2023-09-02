@@ -2,6 +2,8 @@ export const primaryColor = "#892764";
 export const secondaryColor = "#FFC53B";
 export const accentColor = "#D98BB0";
 export const whiteColor = "#FFFFFF";
+export const greenColor = "#5CB686";
+export const redColor = "#Cf2E2E";
 
 export const borderRadius = 5;
 

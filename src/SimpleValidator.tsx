@@ -1,13 +1,18 @@
 import { useState } from "react";
 import { ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
 import Constants from "expo-constants";
-import { accentColor, activeOpacity, borderRadius, primaryColor, secondaryColor, spacingLarge, spacingMedium, spacingSmall, spacingXLarge, whiteColor } from "./styles";
+import {
+    accentColor, activeOpacity, borderRadius, greenColor, primaryColor, redColor,
+    secondaryColor, spacingLarge, spacingMedium, spacingSmall, spacingXLarge, whiteColor
+} from "./styles";
 import { validateIBAN } from "./utils/utils";
+import { AntDesign as Icon } from "@expo/vector-icons";
 
 const SimpleValidator = () => {
     const [input, setInput] = useState("");
     const [isResultVisible, setIsResultVisible] = useState(false);
     const [isValid, setIsValid] = useState(false);
+    const validationColor = isValid ? greenColor : redColor;
 
     const onChangeText = (text: string) => {
         setIsResultVisible(false);
@@ -43,7 +48,8 @@ const SimpleValidator = () => {
 
             {isResultVisible ? (
                 <View style={styles.resultContainer} testID="result">
-                    <Text style={styles.text}>Entered IBAN is {isValid ? "valid" : "not valid"} !</Text>
+                    <Icon name={isValid ? "checkcircle" : "closecircle"} size={24} color={validationColor} />
+                    <Text style={[styles.resultText, { color: validationColor }]}>Entered IBAN is {isValid ? "valid" : "not valid"} !</Text>
                 </View>
             ) : null}
         </ScrollView>
@@ -65,6 +71,7 @@ const styles = StyleSheet.create({
         color: secondaryColor,
     },
     text: {
+        width: "100%",
         fontSize: 18,
         color: whiteColor,
     },
@@ -92,10 +99,19 @@ const styles = StyleSheet.create({
         fontWeight: "600",
     },
     resultContainer: {
+        flexDirection: "row",
+        backgroundColor: whiteColor,
+        width: "100%",
+        padding: spacingMedium,
         marginTop: spacingLarge,
         borderRadius,
-        justifyContent: "center",
         alignItems: "center",
+    },
+    resultText: {
+        marginLeft: spacingMedium,
+        fontSize: 18,
+        color: greenColor,
+        fontWeight: "600",
     },
 });
 
