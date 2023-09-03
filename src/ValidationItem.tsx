@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { accentColor, getValidationColor, primaryColor, spacingMedium, spacingSmall, whiteColor } from "./styles";
 import { Validation } from "./utils/types";
@@ -43,4 +44,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default ValidationItem;
+export default memo(ValidationItem);
