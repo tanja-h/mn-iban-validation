@@ -4,22 +4,28 @@ import {
     accentColor, activeOpacity, borderRadius, primaryColor, secondaryColor, spacingHorizontal,
     spacingLarge, spacingMedium, spacingSmall, whiteColor
 } from "./utils/styles";
-import { validateIBAN } from "./utils/utils";
+import { suggestCorrectIBAN, validateIBAN } from "./utils/utils";
 import ValidationResult from "./ValidationResult";
 
 const SimpleValidator = () => {
     const [input, setInput] = useState("");
     const [isResultVisible, setIsResultVisible] = useState(false);
     const [isValid, setIsValid] = useState(false);
+    const [suggestion, setSuggestion] = useState("");
 
     const onChangeText = (text: string) => {
         setIsResultVisible(false);
         setInput(text);
+        setSuggestion("");
     };
 
     const onValidate = () => {
-        setIsValid(validateIBAN(input));
+        const valid = validateIBAN(input);
+        setIsValid(valid);
         setIsResultVisible(true);
+        if (input.length > 0 && !valid) {
+            setSuggestion(suggestCorrectIBAN(input));
+        } else setSuggestion("");
     };
 
     return (
@@ -33,6 +39,10 @@ const SimpleValidator = () => {
                 placeholderTextColor={accentColor}
                 autoCapitalize="characters"
             />
+
+            <Text style={styles.suggestion}>
+                {suggestion}
+            </Text>
 
             <TouchableOpacity
                 onPress={onValidate}
@@ -61,7 +71,7 @@ const styles = StyleSheet.create({
         color: whiteColor,
     },
     input: {
-        marginVertical: spacingLarge,
+        marginTop: spacingLarge,
         borderWidth: 1,
         borderColor: whiteColor,
         height: 40,
@@ -72,7 +82,7 @@ const styles = StyleSheet.create({
     },
     buttonContainer: {
         padding: spacingMedium,
-        marginBottom: spacingLarge,
+        marginVertical: spacingLarge,
         backgroundColor: secondaryColor,
         alignItems: "center",
         justifyContent: "center",
@@ -84,6 +94,12 @@ const styles = StyleSheet.create({
         fontSize: 16,
         fontWeight: "700",
     },
+    suggestion: {
+        marginTop: spacingSmall,
+        color: accentColor,
+        alignSelf: "flex-start",
+        paddingLeft: spacingSmall,
+    }
 });
 
 export default SimpleValidator;
