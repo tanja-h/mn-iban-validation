@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { StyleSheet, Text, TextInput, View } from "react-native";
 import Constants from "expo-constants";
 import { accentColor, borderRadius, secondaryColor, spacingLarge, spacingSmall, spacingXLarge, whiteColor } from "./styles";
@@ -11,14 +11,15 @@ const ImprovedValidator = () => {
     const [isValid, setIsValid] = useState(false);
 
     const onChangeText = (text: string) => {
-        if (text.length === 0) {
-            setIsResultVisible(false);
-        } else {
-            setIsResultVisible(true);
-        }
         setInput(text);
-        setIsValid(validateIBAN(text));
     };
+
+    useEffect(() => {
+        if (input.length === 0) setIsResultVisible(false);
+        else setIsResultVisible(true);
+
+        setIsValid(validateIBAN(input));
+    }, [input]);
 
     return (
         <View style={styles.container}>
