@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { StyleSheet, Text, TextInput, View } from "react-native";
-import { accentColor, borderRadius, spacingHorizontal, spacingLarge, spacingSmall, spacingXLarge, whiteColor } from "./styles";
+import { accentColor, borderRadius, spacingHorizontal, spacingLarge, spacingSmall, spacingXLarge, whiteColor } from "./utils/styles";
 import { validateIBAN } from "./utils/utils";
 import ValidationResult from "./ValidationResult";
 import ValidationHistory from "./ValidationHistory";

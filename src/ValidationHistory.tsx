@@ -1,5 +1,5 @@
 import { FlatList, StyleProp, StyleSheet, Text, View, ViewStyle } from "react-native";
-import { accentColor, borderRadius, secondaryColor, spacingLarge, spacingMedium, spacingSmall, whiteColor } from "./styles";
+import { accentColor, borderRadius, secondaryColor, spacingLarge, spacingMedium, spacingSmall, whiteColor } from "./utils/styles";
 import { Validation } from "./utils/types";
 import ValidationItem from "./ValidationItem";
 

@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View } from "react-native";
-import { borderRadius, getValidationColor, greenColor, spacingMedium, whiteColor } from "./styles";
+import { borderRadius, getValidationColor, greenColor, spacingMedium, whiteColor } from "./utils/styles";
 import { AntDesign as Icon } from "@expo/vector-icons";
 
 interface Props {

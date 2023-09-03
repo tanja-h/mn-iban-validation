@@ -3,7 +3,7 @@ import { StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-nativ
 import {
     accentColor, activeOpacity, borderRadius, primaryColor, secondaryColor, spacingHorizontal,
     spacingLarge, spacingMedium, spacingSmall, whiteColor
-} from "./styles";
+} from "./utils/styles";
 import { validateIBAN } from "./utils/utils";
 import ValidationResult from "./ValidationResult";
 

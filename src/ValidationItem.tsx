@@ -1,6 +1,6 @@
 import { memo } from "react";
 import { StyleSheet, Text, View } from "react-native";
-import { accentColor, getValidationColor, primaryColor, spacingMedium, spacingSmall, whiteColor } from "./styles";
+import { accentColor, getValidationColor, primaryColor, spacingMedium, spacingSmall, whiteColor } from "./utils/styles";
 import { Validation } from "./utils/types";
 
 const ValidationItem = ({ iban, isValid, date }: Validation) => (

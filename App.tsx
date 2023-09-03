@@ -5,7 +5,7 @@ import Constants from "expo-constants";
 import { Route, TabBar, TabView } from "react-native-tab-view";
 import { MaterialIcons, Ionicons } from "@expo/vector-icons";
 import SimpleValidator from "./src/SimpleValidator";
-import { accentColor, primaryColor, secondaryColor, spacingLarge, spacingXLarge } from "./src/styles";
+import { accentColor, primaryColor, secondaryColor, spacingLarge, spacingXLarge } from "./src/utils/styles";
 import ImprovedValidator from "./src/ImprovedValidator";
 
 const routes: Route[] = [
