@@ -5,6 +5,7 @@ import { Route, TabBar, TabView } from "react-native-tab-view";
 import { MaterialIcons, Ionicons } from "@expo/vector-icons";
 import SimpleValidator from "./src/SimpleValidator";
 import { accentColor, primaryColor, secondaryColor } from "./src/styles";
+import ImprovedValidator from "./src/ImprovedValidator";
 
 const routes: Route[] = [
     { key: "simple", title: "Simple" },
@@ -16,7 +17,7 @@ const renderScene = ({ route }: { route: Route }) => {
         case "simple":
             return <SimpleValidator />;
         case "improved":
-            return <SimpleValidator />;
+            return <ImprovedValidator />;
         default:
             return null;
     }
