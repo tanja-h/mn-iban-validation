@@ -1,18 +1,17 @@
 import { useState } from "react";
-import { ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
+import { StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
 import Constants from "expo-constants";
 import {
-    accentColor, activeOpacity, borderRadius, greenColor, primaryColor, redColor,
-    secondaryColor, spacingLarge, spacingMedium, spacingSmall, spacingXLarge, whiteColor
+    accentColor, activeOpacity, borderRadius, primaryColor, secondaryColor, spacingLarge,
+    spacingMedium, spacingSmall, spacingXLarge, whiteColor
 } from "./styles";
 import { validateIBAN } from "./utils/utils";
-import { AntDesign as Icon } from "@expo/vector-icons";
+import ValidationResult from "./ValidationResult";
 
 const SimpleValidator = () => {
     const [input, setInput] = useState("");
     const [isResultVisible, setIsResultVisible] = useState(false);
     const [isValid, setIsValid] = useState(false);
-    const validationColor = isValid ? greenColor : redColor;
 
     const onChangeText = (text: string) => {
         setIsResultVisible(false);
@@ -25,7 +24,7 @@ const SimpleValidator = () => {
     };
 
     return (
-        <ScrollView contentContainerStyle={styles.container}>
+        <View style={styles.container}>
             <Text style={styles.title}>Montenegro IBAN validator</Text>
             <Text style={styles.text}>Please enter your Montenegro IBAN for a simple validation:</Text>
             <TextInput
@@ -46,13 +45,9 @@ const SimpleValidator = () => {
                 <Text style={styles.buttonText}>VALIDATE</Text>
             </TouchableOpacity>
 
-            {isResultVisible ? (
-                <View style={styles.resultContainer} testID="result">
-                    <Icon name={isValid ? "checkcircle" : "closecircle"} size={24} color={validationColor} />
-                    <Text style={[styles.resultText, { color: validationColor }]}>Entered IBAN is {isValid ? "valid" : "not valid"} !</Text>
-                </View>
-            ) : null}
-        </ScrollView>
+            {isResultVisible ? <ValidationResult isValid={isValid} /> : null}
+
+        </View >
     );
 };
 
@@ -96,21 +91,6 @@ const styles = StyleSheet.create({
         color: primaryColor,
         lineHeight: 20,
         fontSize: 18,
-        fontWeight: "600",
-    },
-    resultContainer: {
-        flexDirection: "row",
-        backgroundColor: whiteColor,
-        width: "100%",
-        padding: spacingMedium,
-        marginTop: spacingLarge,
-        borderRadius,
-        alignItems: "center",
-    },
-    resultText: {
-        marginLeft: spacingMedium,
-        fontSize: 18,
-        color: greenColor,
         fontWeight: "600",
     },
 });

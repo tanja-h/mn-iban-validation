@@ -1,18 +1,14 @@
 import { useState } from "react";
 import { StyleSheet, Text, TextInput, View } from "react-native";
 import Constants from "expo-constants";
-import {
-    accentColor, borderRadius, greenColor, redColor,
-    secondaryColor, spacingLarge, spacingMedium, spacingSmall, spacingXLarge, whiteColor
-} from "./styles";
+import { accentColor, borderRadius, secondaryColor, spacingLarge, spacingSmall, spacingXLarge, whiteColor } from "./styles";
 import { validateIBAN } from "./utils/utils";
-import { AntDesign as Icon } from "@expo/vector-icons";
+import ValidationResult from "./ValidationResult";
 
 const ImprovedValidator = () => {
     const [input, setInput] = useState("");
     const [isResultVisible, setIsResultVisible] = useState(false);
     const [isValid, setIsValid] = useState(false);
-    const validationColor = isValid ? greenColor : redColor;
 
     const onChangeText = (text: string) => {
         if (text.length === 0) {
@@ -27,7 +23,9 @@ const ImprovedValidator = () => {
     return (
         <View style={styles.container}>
             <Text style={styles.title}>Montenegro IBAN validator</Text>
-            <Text style={styles.text}>Please enter your Montenegro IBAN for improved validation:</Text>
+            <Text style={styles.text}>
+                Please enter your Montenegro IBAN for improved validation:
+            </Text>
             <TextInput
                 value={input}
                 onChangeText={onChangeText}
@@ -37,12 +35,7 @@ const ImprovedValidator = () => {
                 autoCapitalize="characters"
             />
 
-            {isResultVisible ? (
-                <View style={styles.resultContainer} testID="result">
-                    <Icon name={isValid ? "checkcircle" : "closecircle"} size={24} color={validationColor} />
-                    <Text style={[styles.resultText, { color: validationColor }]}>Entered IBAN is {isValid ? "valid" : "not valid"} !</Text>
-                </View>
-            ) : null}
+            {isResultVisible ? <ValidationResult isValid={isValid} /> : null}
         </View>
     );
 };
@@ -75,21 +68,6 @@ const styles = StyleSheet.create({
         paddingHorizontal: spacingSmall,
         color: whiteColor,
         borderRadius,
-    },
-    resultContainer: {
-        flexDirection: "row",
-        backgroundColor: whiteColor,
-        width: "100%",
-        padding: spacingMedium,
-        marginTop: spacingLarge,
-        borderRadius,
-        alignItems: "center",
-    },
-    resultText: {
-        marginLeft: spacingMedium,
-        fontSize: 18,
-        color: greenColor,
-        fontWeight: "600",
     },
 });
 
