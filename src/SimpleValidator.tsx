@@ -29,7 +29,7 @@ const SimpleValidator = () => {
                 value={input}
                 onChangeText={onChangeText}
                 style={styles.input}
-                placeholder="MN..."
+                placeholder="ME..."
                 placeholderTextColor={accentColor}
                 autoCapitalize="characters"
             />

@@ -6,7 +6,7 @@ describe("<SimpleValidator />", () => {
     it("displays validation result on input change", () => {
         const { getByTestId, getByPlaceholderText } = render(<ImprovedValidator />);
 
-        const inputField = getByPlaceholderText("MN...");
+        const inputField = getByPlaceholderText("ME...");
         fireEvent.changeText(inputField, "text");
 
         const result = getByTestId("result");
@@ -17,7 +17,7 @@ describe("<SimpleValidator />", () => {
     it("hides validation result on input reset", () => {
         const { queryByTestId, getByPlaceholderText } = render(<ImprovedValidator />);
 
-        const inputField = getByPlaceholderText("MN...");
+        const inputField = getByPlaceholderText("ME...");
         fireEvent.changeText(inputField, "");
 
         const result = queryByTestId("result");

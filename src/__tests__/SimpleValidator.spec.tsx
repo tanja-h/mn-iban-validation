@@ -14,7 +14,7 @@ describe("<SimpleValidator />", () => {
 
     it("hides the result on input change", () => {
         const { queryByTestId, getByPlaceholderText } = render(<SimpleValidator />);
-        const inputField = getByPlaceholderText("MN...");
+        const inputField = getByPlaceholderText("ME...");
         fireEvent.changeText(inputField, "text");
 
         const result = queryByTestId("result");
