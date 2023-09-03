@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View } from "react-native";
-import { borderRadius, greenColor, redColor, spacingMedium, whiteColor } from "./styles";
+import { borderRadius, getValidationColor, greenColor, spacingMedium, whiteColor } from "./styles";
 import { AntDesign as Icon } from "@expo/vector-icons";
 
 interface Props {
@@ -7,15 +7,17 @@ interface Props {
 }
 
 const ValidationResult = ({ isValid }: Props) => {
-    const validationColor = isValid ? greenColor : redColor;
+    const validationColor = getValidationColor(isValid);
 
     return (
         <View style={styles.container} testID="result">
             <Icon name={isValid ? "checkcircle" : "closecircle"} size={24} color={validationColor} />
             <Text style={[styles.text, { color: validationColor }]}>
                 Entered IBAN is
-                {isValid ? " " : " not "}
-                valid !
+                {" "}
+                {isValid ? "valid" : "not valid"}
+                {" "}
+                !
             </Text>
         </View>
     );

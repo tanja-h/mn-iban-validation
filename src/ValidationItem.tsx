@@ -1,14 +1,14 @@
 import { StyleSheet, Text, View } from "react-native";
-import { accentColor, greenColor, primaryColor, redColor, spacingMedium, spacingSmall, whiteColor } from "./styles";
-import { Status, Validation } from "./utils/types";
+import { accentColor, getValidationColor, primaryColor, spacingMedium, spacingSmall, whiteColor } from "./styles";
+import { Validation } from "./utils/types";
 
-const ValidationItem = ({ iban, status, date }: Validation) => (
+const ValidationItem = ({ iban, isValid, date }: Validation) => (
     <View key={iban} style={styles.mainContainer}>
         <Text style={styles.iban}>{iban}</Text>
 
         <View style={styles.container}>
-            <Text style={[styles.status, { color: status === Status.VALID ? greenColor : redColor }]}>
-                {status}
+            <Text style={[styles.status, { color: getValidationColor(isValid) }]}>
+                {isValid ? "VALID" : "NOT VALID"}
             </Text>
             <Text style={styles.date}>{date.toLocaleString("en-GB")}</Text>
         </View>

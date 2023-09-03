@@ -1,10 +1,6 @@
 export interface Validation {
     iban: string;
-    status: Status;
+    isValid: boolean;
     date: Date;
 }
 
-export enum Status {
-    VALID = "VALID",
-    INVALID = "NOT VALID"
-}

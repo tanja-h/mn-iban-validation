@@ -1,28 +1,16 @@
 import { useEffect, useState } from "react";
 import { StyleSheet, Text, TextInput, View } from "react-native";
-import { accentColor, borderRadius, spacingHorizontal, spacingLarge, spacingSmall, whiteColor } from "./styles";
+import { accentColor, borderRadius, spacingHorizontal, spacingLarge, spacingSmall, spacingXLarge, whiteColor } from "./styles";
 import { validateIBAN } from "./utils/utils";
 import ValidationResult from "./ValidationResult";
 import ValidationHistory from "./ValidationHistory";
-import { Status, Validation } from "./utils/types";
-
-const list: Validation[] = [
-    { iban: "ME", status: Status.INVALID, date: new Date },
-    { iban: "ME6876967858787", status: Status.VALID, date: new Date },
-    { iban: "ME68769678587687", status: Status.INVALID, date: new Date },
-    { iban: "ME6876967858697", status: Status.VALID, date: new Date },
-    { iban: "ME687696785876987", status: Status.INVALID, date: new Date },
-    { iban: "ME6879678576987", status: Status.INVALID, date: new Date },
-    { iban: "ME68796785876987", status: Status.VALID, date: new Date },
-    { iban: "ME68769678586987", status: Status.VALID, date: new Date },
-    { iban: "ME6869678576987", status: Status.INVALID, date: new Date },
-];
-
+import { Validation } from "./utils/types";
 
 const ImprovedValidator = () => {
     const [input, setInput] = useState("");
     const [isResultVisible, setIsResultVisible] = useState(false);
     const [isValid, setIsValid] = useState(false);
+    const [history, setHistory] = useState<Validation[]>([]);
 
     const onChangeText = (text: string) => {
         setInput(text);
@@ -30,9 +18,18 @@ const ImprovedValidator = () => {
 
     useEffect(() => {
         if (input.length === 0) setIsResultVisible(false);
-        else setIsResultVisible(true);
+        else {
+            setIsResultVisible(true);
+            const valid = validateIBAN(input);
 
-        setIsValid(validateIBAN(input));
+            const validation: Validation = {
+                iban: input,
+                isValid: valid,
+                date: new Date()
+            };
+            setIsValid(valid);
+            setHistory(prevHistory => [validation, ...prevHistory]);
+        }
     }, [input]);
 
     return (
@@ -51,9 +48,7 @@ const ImprovedValidator = () => {
 
             {isResultVisible ? <ValidationResult isValid={isValid} /> : null}
 
-            {list.length > 0 ? (
-                <ValidationHistory list={list} style={isResultVisible ? styles.margin : {}} />
-            ) : null}
+            <ValidationHistory list={history} style={isResultVisible ? styles.margin : {}} />
         </View>
     );
 };
@@ -79,7 +74,7 @@ const styles = StyleSheet.create({
         borderRadius,
     },
     margin: {
-        marginTop: spacingLarge,
+        marginTop: spacingXLarge,
     },
 });
 

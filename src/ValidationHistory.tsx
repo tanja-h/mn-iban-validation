@@ -15,10 +15,9 @@ const ValidationHistory = ({ list, style }: Props) => (
         <FlatList
             data={list}
             style={styles.container}
-            showsVerticalScrollIndicator={false}
-            keyExtractor={item => item.date.toString()}
-            renderItem={({ item: { iban, status, date } }) => (
-                <ValidationItem iban={iban} status={status} date={date} />
+            keyExtractor={(item) => item.date.toISOString()}
+            renderItem={({ item: { iban, isValid, date } }) => (
+                <ValidationItem iban={iban} isValid={isValid} date={date} />
             )} />
     </View>
 );

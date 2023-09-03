@@ -15,3 +15,5 @@ export const spacingLarge = 32;
 export const spacingXLarge = 48;
 
 export const spacingHorizontal = 24;
+
+export const getValidationColor = (isValid: boolean) => isValid ? greenColor : redColor;
