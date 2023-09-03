@@ -13,3 +13,5 @@ export const spacingSmall = 8;
 export const spacingMedium = 16;
 export const spacingLarge = 32;
 export const spacingXLarge = 48;
+
+export const spacingHorizontal = 24;

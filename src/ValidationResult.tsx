@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View } from "react-native";
-import { borderRadius, greenColor, redColor, spacingLarge, spacingMedium, whiteColor } from "./styles";
+import { borderRadius, greenColor, redColor, spacingMedium, whiteColor } from "./styles";
 import { AntDesign as Icon } from "@expo/vector-icons";
 
 interface Props {
@@ -27,7 +27,6 @@ const styles = StyleSheet.create({
         backgroundColor: whiteColor,
         width: "100%",
         padding: spacingMedium,
-        marginTop: spacingLarge,
         borderRadius,
         alignItems: "center",
     },

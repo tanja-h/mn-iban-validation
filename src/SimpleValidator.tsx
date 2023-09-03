@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
 import {
-    accentColor, activeOpacity, borderRadius, primaryColor, secondaryColor, spacingLarge,
-    spacingMedium, spacingSmall, whiteColor
+    accentColor, activeOpacity, borderRadius, primaryColor, secondaryColor, spacingHorizontal,
+    spacingLarge, spacingMedium, spacingSmall, whiteColor
 } from "./styles";
 import { validateIBAN } from "./utils/utils";
 import ValidationResult from "./ValidationResult";
@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         alignItems: "center",
-        paddingHorizontal: spacingLarge,
+        paddingHorizontal: spacingHorizontal,
     },
     text: {
         width: "100%",
@@ -72,6 +72,7 @@ const styles = StyleSheet.create({
     },
     buttonContainer: {
         padding: spacingMedium,
+        marginBottom: spacingLarge,
         backgroundColor: secondaryColor,
         alignItems: "center",
         justifyContent: "center",
