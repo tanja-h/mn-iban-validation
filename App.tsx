@@ -1,10 +1,11 @@
 import { useState } from "react";
+import { Dimensions, StyleSheet, Text, View } from "react-native";
 import { StatusBar } from "expo-status-bar";
-import { Dimensions, StyleSheet, View } from "react-native";
+import Constants from "expo-constants";
 import { Route, TabBar, TabView } from "react-native-tab-view";
 import { MaterialIcons, Ionicons } from "@expo/vector-icons";
 import SimpleValidator from "./src/SimpleValidator";
-import { accentColor, primaryColor, secondaryColor } from "./src/styles";
+import { accentColor, primaryColor, secondaryColor, spacingLarge, spacingXLarge } from "./src/styles";
 import ImprovedValidator from "./src/ImprovedValidator";
 
 const routes: Route[] = [
@@ -40,6 +41,7 @@ export default function App() {
     return (
         <View style={styles.container}>
             <StatusBar style="light" />
+            <Text style={styles.title}>Montenegro IBAN validator</Text>
 
             <TabView
                 navigationState={{ index, routes }}
@@ -68,6 +70,15 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: primaryColor,
+        paddingTop: Constants.statusBarHeight,
+    },
+    title: {
+        marginTop: spacingLarge,
+        marginBottom: spacingXLarge,
+        fontSize: 20,
+        fontWeight: "500",
+        color: secondaryColor,
+        alignSelf: "center",
     },
     tabBar: {
         backgroundColor: primaryColor,

@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { StyleSheet, Text, TextInput, View } from "react-native";
-import Constants from "expo-constants";
-import { accentColor, borderRadius, secondaryColor, spacingLarge, spacingSmall, spacingXLarge, whiteColor } from "./styles";
+import { accentColor, borderRadius, spacingLarge, spacingSmall, whiteColor } from "./styles";
 import { validateIBAN } from "./utils/utils";
 import ValidationResult from "./ValidationResult";
 
@@ -23,7 +22,6 @@ const ImprovedValidator = () => {
 
     return (
         <View style={styles.container}>
-            <Text style={styles.title}>Montenegro IBAN validator</Text>
             <Text style={styles.text}>
                 Please enter your Montenegro IBAN for improved validation:
             </Text>
@@ -44,16 +42,8 @@ const ImprovedValidator = () => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        marginTop: Constants.statusBarHeight,
         alignItems: "center",
         paddingHorizontal: spacingLarge,
-    },
-    title: {
-        marginTop: spacingLarge,
-        marginBottom: spacingXLarge,
-        fontSize: 20,
-        fontWeight: "500",
-        color: secondaryColor,
     },
     text: {
         width: "100%",
