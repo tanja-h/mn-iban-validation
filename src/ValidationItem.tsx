@@ -30,16 +30,17 @@ const styles = StyleSheet.create({
     },
     iban: {
         color: primaryColor,
-        fontSize: 16,
+        fontSize: 14,
         marginBottom: spacingSmall,
         fontWeight: "700",
     },
     status: {
-        fontSize: 14,
+        fontSize: 12,
         color: whiteColor,
         fontWeight: "500",
     },
     date: {
+        fontSize: 12,
         color: accentColor,
     },
 });

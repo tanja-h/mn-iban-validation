@@ -35,7 +35,7 @@ const ImprovedValidator = () => {
     return (
         <View style={styles.container}>
             <Text style={styles.text}>
-                Please enter your Montenegro IBAN for improved validation:
+                Please enter your Montenegro IBAN for an improved validation:
             </Text>
             <TextInput
                 value={input}
@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
     },
     text: {
         width: "100%",
-        fontSize: 18,
+        fontSize: 16,
         color: whiteColor,
     },
     input: {

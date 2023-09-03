@@ -34,7 +34,8 @@ const styles = StyleSheet.create({
     },
     text: {
         marginLeft: spacingMedium,
-        fontSize: 18,
+        fontSize: 16,
+        lineHeight: 18,
         color: greenColor,
         fontWeight: "600",
     },

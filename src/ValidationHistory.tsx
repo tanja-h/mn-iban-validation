@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
     },
     title: {
         marginLeft: spacingSmall,
-        fontSize: 18,
+        fontSize: 16,
         color: secondaryColor,
         fontWeight: "500",
     },

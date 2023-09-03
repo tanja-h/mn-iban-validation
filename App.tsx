@@ -27,9 +27,9 @@ const renderScene = ({ route }: { route: Route }) => {
 const renderIcon = (route: Route, color: string) => {
     switch (route.key) {
         case "simple":
-            return <MaterialIcons name="calculate" size={26} color={color} />;
+            return <MaterialIcons name="calculate" size={22} color={color} />;
         case "improved":
-            return <Ionicons name="md-calculator" size={24} color={color} />;
+            return <Ionicons name="md-calculator" size={20} color={color} />;
         default:
             return null;
     }
@@ -82,13 +82,14 @@ const styles = StyleSheet.create({
     },
     tabBar: {
         backgroundColor: primaryColor,
-        borderTopWidth: 2,
+        borderTopWidth: 1,
         borderTopColor: accentColor,
     },
     label: {
         textTransform: "uppercase",
         letterSpacing: 0.5,
         fontWeight: "500",
+        fontSize: 10,
     },
     indicator: {
         backgroundColor: secondaryColor,

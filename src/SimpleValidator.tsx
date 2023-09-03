@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
     },
     text: {
         width: "100%",
-        fontSize: 18,
+        fontSize: 16,
         color: whiteColor,
     },
     input: {
@@ -81,8 +81,8 @@ const styles = StyleSheet.create({
     buttonText: {
         color: primaryColor,
         lineHeight: 20,
-        fontSize: 18,
-        fontWeight: "600",
+        fontSize: 16,
+        fontWeight: "700",
     },
 });
 
